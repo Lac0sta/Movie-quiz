@@ -7,19 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F78C96262C727E8800C99400 /* MovieQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78C96252C727E8800C99400 /* MovieQuizViewController.swift */; };
+		F78C96282C727EC500C99400 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78C96272C727EC500C99400 /* UIColor+Extensions.swift */; };
+		F78C962A2C727EDF00C99400 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78C96292C727EDF00C99400 /* Array+Extensions.swift */; };
+		F78C962C2C727EF500C99400 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78C962B2C727EF500C99400 /* Date+Extensions.swift */; };
 		F7AF2C762C5963E4003831AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AF2C752C5963E4003831AC /* AppDelegate.swift */; };
 		F7AF2C782C5963E4003831AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AF2C772C5963E4003831AC /* SceneDelegate.swift */; };
-		F7AF2C7A2C5963E4003831AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AF2C792C5963E4003831AC /* ViewController.swift */; };
 		F7AF2C7D2C5963E4003831AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7AF2C7B2C5963E4003831AC /* Main.storyboard */; };
 		F7AF2C7F2C5963E8003831AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7AF2C7E2C5963E8003831AC /* Assets.xcassets */; };
 		F7AF2C822C5963E8003831AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7AF2C802C5963E8003831AC /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F78C96252C727E8800C99400 /* MovieQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuizViewController.swift; sourceTree = "<group>"; };
+		F78C96272C727EC500C99400 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		F78C96292C727EDF00C99400 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		F78C962B2C727EF500C99400 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		F7AF2C722C5963E4003831AC /* Movie quiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie quiz.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7AF2C752C5963E4003831AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7AF2C772C5963E4003831AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F7AF2C792C5963E4003831AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F7AF2C7C2C5963E4003831AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7AF2C7E2C5963E8003831AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7AF2C812C5963E8003831AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,10 +43,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F78C96202C727DFE00C99400 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F78C96272C727EC500C99400 /* UIColor+Extensions.swift */,
+				F78C96292C727EDF00C99400 /* Array+Extensions.swift */,
+				F78C962B2C727EF500C99400 /* Date+Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F78C96212C727E0C00C99400 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F78C96222C727E1600C99400 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F7AF2C802C5963E8003831AC /* LaunchScreen.storyboard */,
+				F7AF2C7E2C5963E8003831AC /* Assets.xcassets */,
+				F7AF2C832C5963E8003831AC /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F78C96232C727E2400C99400 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F78C96242C727E4800C99400 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F7AF2C7B2C5963E4003831AC /* Main.storyboard */,
+				F78C96252C727E8800C99400 /* MovieQuizViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 		F7AF2C692C5963E4003831AC = {
 			isa = PBXGroup;
 			children = (
 				F7AF2C742C5963E4003831AC /* Movie quiz */,
+				F78C96232C727E2400C99400 /* Services */,
 				F7AF2C732C5963E4003831AC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,11 +108,10 @@
 			children = (
 				F7AF2C752C5963E4003831AC /* AppDelegate.swift */,
 				F7AF2C772C5963E4003831AC /* SceneDelegate.swift */,
-				F7AF2C792C5963E4003831AC /* ViewController.swift */,
-				F7AF2C7B2C5963E4003831AC /* Main.storyboard */,
-				F7AF2C7E2C5963E8003831AC /* Assets.xcassets */,
-				F7AF2C802C5963E8003831AC /* LaunchScreen.storyboard */,
-				F7AF2C832C5963E8003831AC /* Info.plist */,
+				F78C96202C727DFE00C99400 /* Helpers */,
+				F78C96212C727E0C00C99400 /* Models */,
+				F78C96242C727E4800C99400 /* Presentation */,
+				F78C96222C727E1600C99400 /* Resources */,
 			);
 			path = "Movie quiz";
 			sourceTree = "<group>";
@@ -138,9 +187,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7AF2C7A2C5963E4003831AC /* ViewController.swift in Sources */,
+				F78C96262C727E8800C99400 /* MovieQuizViewController.swift in Sources */,
+				F78C962A2C727EDF00C99400 /* Array+Extensions.swift in Sources */,
 				F7AF2C762C5963E4003831AC /* AppDelegate.swift in Sources */,
 				F7AF2C782C5963E4003831AC /* SceneDelegate.swift in Sources */,
+				F78C96282C727EC500C99400 /* UIColor+Extensions.swift in Sources */,
+				F78C962C2C727EF500C99400 /* Date+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +268,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				INFOPLIST_FILE = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +323,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				INFOPLIST_FILE = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -289,12 +343,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4U62Q8ST39;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Movie quiz/Info.plist";
+				INFOPLIST_FILE = "Movie quiz/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +357,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.swiftappsme.Movie-quiz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -317,12 +374,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4U62Q8ST39;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Movie quiz/Info.plist";
+				INFOPLIST_FILE = "Movie quiz/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +388,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.swiftappsme.Movie-quiz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

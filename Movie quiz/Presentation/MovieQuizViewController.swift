@@ -86,6 +86,8 @@ final class MovieQuizViewController: UIViewController {
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var textLabel: UILabel!
     @IBOutlet private var counterLabel: UILabel!
+    @IBOutlet private var yesButton: UIButton!
+    @IBOutlet private var noButton: UIButton!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -116,9 +118,12 @@ final class MovieQuizViewController: UIViewController {
         counterLabel.text = step.questionNumber
         imageView.image = step.image
         textLabel.text = step.question
+        
+        imageView.layer.borderWidth = 0
     }
     
     private func showAnswerResult(isCorrect: Bool) {
+        answerButtonsEnabled(isEnabled: false)
         
         if isCorrect {
             correctAnswers += 1
@@ -144,6 +149,7 @@ final class MovieQuizViewController: UIViewController {
         } else {
             currentQuestionIndex += 1
             showQuestion(quiz: convert(model: questions[currentQuestionIndex]))
+            answerButtonsEnabled(isEnabled: true)
         }
     }
     
@@ -160,5 +166,10 @@ final class MovieQuizViewController: UIViewController {
         
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func answerButtonsEnabled(isEnabled: Bool) {
+        yesButton.isEnabled = isEnabled
+        noButton.isEnabled = isEnabled
     }
 }

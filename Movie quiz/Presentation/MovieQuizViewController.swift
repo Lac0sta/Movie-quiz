@@ -7,81 +7,13 @@
 
 import UIKit
 
-struct QuizQuestion {
-    // The movie title, matches the movie poster image name in Assets
-    let movieImage: String
-    // Question about the movie rating
-    let questionText: String
-    // The correct answer to the question
-    let isCorrectAnswer: Bool
-}
-
-// View model for the "Question is shown" state
-struct QuizStepViewModel {
-    // The movie poster of type UIImage
-    let image: UIImage
-    // Question about the quiz rating
-    let question: String
-    // The ordinal number of the question (e.g., "1/10")
-    let questionNumber: String
-}
-
-// View model for the "Quiz Result" state
-struct QuizResultViewModel {
-    // The alert title
-    let title: String
-    // The text about the number of points scored
-    let text: String
-    // The text for the alert button
-    let butonText: String
-}
-
 final class MovieQuizViewController: UIViewController {
     
-    private let questions: [QuizQuestion] = [
-        QuizQuestion(
-            movieImage: "The Godfather",
-            questionText: "Is the rating of this movie more than 6?", // Rating: 9,2
-            isCorrectAnswer: true),
-        QuizQuestion(
-            movieImage: "The Dark Knight",
-            questionText: "Is the rating of this movie more than 6?", // Rating: 9
-            isCorrectAnswer: true),
-        QuizQuestion(
-            movieImage: "Kill Bill",
-            questionText: "Is the rating of this movie more than 6?", // Rating: 8,1
-            isCorrectAnswer: true),
-        QuizQuestion(
-            movieImage: "The Avengers",
-            questionText: "Is the rating of this movie more than 6?", // Rating: 8
-            isCorrectAnswer: true),
-        QuizQuestion(
-            movieImage: "Deadpool",
-            questionText: "Is the rating of this movie more than 6?", // Rating: 8
-            isCorrectAnswer: true),
-        QuizQuestion(
-            movieImage: "The Green Knight",
-            questionText: "Is the rating of this movie more than 6?", // Rating: 6,6
-            isCorrectAnswer: true),
-        QuizQuestion(
-            movieImage: "Old",
-            questionText: "Is the rating of this movie more than 6?", // Rating: 5,8
-            isCorrectAnswer: false),
-        QuizQuestion(
-            movieImage: "The Ice Age Adventures of Buck Wild",
-            questionText: "Is the rating of this movie more than 6?", // Rating: 4.3
-            isCorrectAnswer: false),
-        QuizQuestion(
-            movieImage: "Tesla",
-            questionText: "Is the rating of this movie more than 6?", // Rating: 5,1
-            isCorrectAnswer: false),
-        QuizQuestion(
-            movieImage: "Vivarium",
-            questionText: "Is the rating of this movie more than 6?", // Rating: 5,8
-            isCorrectAnswer: false)
-    ]
+    private let questionAmount: Int = 10
     private var currentQuestionIndex = 0
     private var correctAnswers = 0
+    private var questionGenerator: QuestionGenerator = QuestionGenerator()
+    private var currentQuestion: QuizQuestion?
     
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var textLabel: UILabel!
@@ -93,24 +25,32 @@ final class MovieQuizViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showQuestion(quiz: convert(model: questions[currentQuestionIndex]))
+        if let firstQuestion = questionGenerator.requestNextQuestion() {
+            currentQuestion = firstQuestion
+            let viewModel = convert(model: firstQuestion)
+            showQuestion(quiz: viewModel)
+        }
     }
     
     @IBAction private func yesButtonClicked(_ sender: UIButton) {
         let givenAnswer = true
-        showAnswerResult(isCorrect: questions[currentQuestionIndex].isCorrectAnswer == givenAnswer)
+        
+        guard let currentQuestion else { return }
+        showAnswerResult(isCorrect: currentQuestion.isCorrectAnswer == givenAnswer)
     }
     
     @IBAction private func noButtonClicked(_ sender: UIButton) {
         let givenAnswer = false
-        showAnswerResult(isCorrect: questions[currentQuestionIndex].isCorrectAnswer == givenAnswer)
+        
+        guard let currentQuestion else { return }
+        showAnswerResult(isCorrect: currentQuestion.isCorrectAnswer == givenAnswer)
     }
     
     private func convert(model: QuizQuestion) -> QuizStepViewModel {
         let questionStep = QuizStepViewModel(
             image: UIImage(named: model.movieImage) ?? UIImage(),
             question: model.questionText,
-            questionNumber: "\(currentQuestionIndex + 1)/\(questions.count)")
+            questionNumber: "\(currentQuestionIndex + 1)/\(questionAmount)")
         return questionStep
     }
     
@@ -141,7 +81,7 @@ final class MovieQuizViewController: UIViewController {
     }
     
     private func showNextQuestionOrResult() {
-        if currentQuestionIndex == questions.count - 1 {
+        if currentQuestionIndex == questionAmount - 1 {
             
             showAlertWith(result: QuizResultViewModel(title: "This round is finished",
                                                       text: "Your score is \(correctAnswers)",
@@ -149,7 +89,11 @@ final class MovieQuizViewController: UIViewController {
             
         } else {
             currentQuestionIndex += 1
-            showQuestion(quiz: convert(model: questions[currentQuestionIndex]))
+            if let nextQuestion = questionGenerator.requestNextQuestion() {
+                currentQuestion = nextQuestion
+                let viewModel = convert(model: nextQuestion)
+                showQuestion(quiz: viewModel)
+            }
             answerButtonsEnabled(isEnabled: true)
         }
     }
@@ -163,7 +107,13 @@ final class MovieQuizViewController: UIViewController {
             guard let self = self else { return }
             self.currentQuestionIndex = 0
             self.correctAnswers = 0
-            self.showQuestion(quiz: self.convert(model: self.questions[self.currentQuestionIndex]))
+            
+            if let firstQuestion = self.questionGenerator.requestNextQuestion() {
+                self.currentQuestion = firstQuestion
+                let viewModel = self.convert(model: firstQuestion)
+                self.showQuestion(quiz: viewModel)
+            }
+            self.answerButtonsEnabled(isEnabled: true)
         }
         
         alert.addAction(action)
